@@ -1,0 +1,27 @@
+Bundle-Name: Ha-VIS ISO15961-2
+Bundle-SymbolicName: havis.custom.harting.iso159612
+Bundle-Version: 2.7.0
+Application-Name: ISO/IEC 15961-2
+Implementation-Version: 2.7
+Bundle-ManifestVersion: 2
+Bundle-Vendor: HARTING IT_SD
+Havis-Bundle: /OSGI-INF/havis.custom.harting.iso159612.properties
+Bundle-Activator: havis.custom.harting.iso159612.osgi.Activator
+Import-Package: 
+ com.fasterxml.jackson.annotation,
+ com.fasterxml.jackson.core,
+ com.fasterxml.jackson.databind,
+ havis.device.rf.tag,
+ havis.net.rest.shared.data,
+ havis.capture,
+ havis.transform,
+ havis.transform.transformer.imager,
+ havis.transport,
+ havis.transport.common,
+ javax.ws.rs,
+ javax.ws.rs.core,
+ javax.ws.rs.ext,
+ javax.xml.bind.annotation,
+ org.osgi;resolution:=optional,
+ org.osgi.framework;resolution:=optional,
+ org.osgi.util.tracker;resolution:=optional

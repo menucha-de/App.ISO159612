@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="havis.custom.harting.iso159612" default="publish" xmlns:ivy="antlib:org.apache.ivy.ant">
+
+	<property file="${basedir}/build.properties" />
+
+	<import>
+		<url url="${ivy.url}/ant/default.xml" />
+	</import>
+
+	<firstmatchmapper id="mapper">
+		<globmapper from="${build.dir}/*.jar" to="${dst.dir}/bundle/50_*.jar" />
+		<globmapper from="${build.dir}/*.js" to="${build.dir}/client/*.js" />
+	</firstmatchmapper>
+
+	<target name="clean-cache" description="Cleans the ivy cache">
+		<clean-cache />
+	</target>
+
+	<target name="clean-all" description="Cleans the project and ivy cache">
+		<clean-all />
+	</target>
+
+	<target name="jar" description="Creates the binary JAR">
+		<compile dst="${build.dir.classes}">
+			<src path="${src.main.dir}" />
+		</compile>
+		<compile-gwt dst="${build.dir}/client" modules="havis.custom.harting.iso159612.ui.ISO159612_HAL" />
+		<compile-gwt modules="havis.custom.harting.iso159612.ui.ISO159612_REST" />
+		<jar-bin />
+	</target>
+
+	<target name="client" depends="jar">
+		<client>
+			<ivy:retrieve pattern="${build.dir}/client/[artifact].[ext]" conf="client" />
+		</client>
+	</target>
+
+	<target name="app" depends="jar">
+		<app name="havis.iso15961-2">
+			<ivy:retrieve pattern="${build.dir}/tar/[artifact].[ext]" conf="runtime" />
+		</app>
+	</target>
+
+	<target name="standalone" depends="jar">
+		<client base="" zip="false" />
+		<standalone mapper="mapper" />
+		<extract name="havis.llrp-server.app" />
+		<extract name="havis.device.test.stub.app" />
+	</target>
+
+	<target name="publish" depends="app, client" description="Publishes the JAR to the repository">
+		<publish jar="false" app="false" />
+	</target>
+
+</project>

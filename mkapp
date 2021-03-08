@@ -1,0 +1,50 @@
+#!/bin/bash
+
+set -e
+set -x
+
+env
+
+. /usr/share/mkapp/functions
+
+prepare
+
+for arch in $ARCH; do
+  set_env $arch
+  ant_build clean-all
+  mkdir -p target/tar
+  cd target/tar
+  
+  apt-get download -t ${DIST} havis.capture-api havis.capture.adapter.camera:${arch} libv4l-0:${arch} libv4lconvert0:${arch} libjpeg62-turbo:${arch}
+  mv havis.capture-api_*.deb havis.capture-api.deb
+  mv havis.capture.adapter.camera_*.deb havis.capture.adapter.camera.deb
+  for i in libv4l-0 libv4lconvert0 libjpeg62-turbo; do
+    mv ${i}_*.deb $i.deb
+    ar x $i.deb data.tar.xz
+    unxz -c data.tar.xz | gzip - > data.tar.gz
+    ar d $i.deb data.tar.xz
+    ar r $i.deb data.tar.gz
+    rm data.tar.*
+  done
+  cd -
+  ant_build
+  
+  if [ "$PUBLISH" ]; then
+    publish_ivy ivy
+    cd target/tar
+    rm havis.capture-api.deb havis.capture.adapter.camera.deb libv4l-0.deb libv4lconvert0.deb libjpeg62-turbo.deb
+    dpkg-name *.deb
+    publish_deb *.deb
+    cd -
+  fi
+
+  if [ "$RELEASE" ]; then
+    cd target
+    APP=$(ls *.app)
+    APP=${APP%.app}
+    mv $APP.app ${APP}_${arch}.app
+    zip ../${APP}_${arch}.zip ${APP}_${arch}.app
+    cd -
+    echo "::set-output name=APP_${arch}::${APP}_${arch}.zip"
+  fi
+done

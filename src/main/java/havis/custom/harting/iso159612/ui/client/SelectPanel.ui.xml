@@ -1,0 +1,20 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder" xmlns:g="urn:import:com.google.gwt.user.client.ui"
+	xmlns:c="urn:import:havis.application.component.ui" xmlns:w="urn:import:havis.custom.harting.iso159612.ui.client.widgets">
+	<ui:with type="havis.custom.harting.iso159612.utils.Translation" field="i18n" />
+	<ui:style>				
+	</ui:style>
+	<g:FlowPanel addStyleNames="panel">
+		<g:FlowPanel ui:field="header" addStyleNames="header">
+			<g:Image ui:field="clear" url="images/Icn_delete_32x32.png" addStyleNames="clear"></g:Image>
+			<w:PlaceholderTextBox ui:field="searchBar" placeholder="{i18n.selectSearchPlaceholder}"
+				addStyleNames="havis-textBox search-bar" />
+		</g:FlowPanel>
+		<g:ScrollPanel ui:field="scrollPanel" addStyleNames="scroll-container-sel">
+			<g:FlexTable ui:field="list" addStyleNames="data-elements data-elements-sel" />
+		</g:ScrollPanel>
+		<g:HorizontalPanel ui:field="toolbar" addStyleNames="toolbar">
+			<g:Button ui:field="cancel" text="CANCEL" addStyleNames="toolbar-button toolbar-button-sel" />
+		</g:HorizontalPanel>
+	</g:FlowPanel>
+</ui:UiBinder> 
