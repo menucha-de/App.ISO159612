@@ -36,7 +36,11 @@
 	</target>
 
 	<target name="app" depends="jar">
-		<app name="havis.iso15961-2">
+		<app name="havis.iso15961-2" deb="false">
+			<deb dst="${build.dir}/tar">
+				<symlink link="${build.dir}/deb/opt/havis-apps/bundle/50_havis.capture.adapter.camera.jar" resource="/usr/share/java/havis.capture.adapter.camera.jar"/>
+				<symlink link="${build.dir}/deb/opt/havis-apps/bundle/50_havis.capture-api.jar" resource="../modules/havis.capture-api.jar"/>	
+			</deb>
 			<ivy:retrieve pattern="${build.dir}/tar/[artifact].[ext]" conf="runtime" />
 		</app>
 	</target>
