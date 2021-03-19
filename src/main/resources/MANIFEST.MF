@@ -1,12 +1,12 @@
 Bundle-Name: Ha-VIS ISO15961-2
-Bundle-SymbolicName: havis.custom.harting.iso159612
+Bundle-SymbolicName: havis.app.iso159612
 Bundle-Version: 2.7.0
 Application-Name: ISO/IEC 15961-2
 Implementation-Version: 2.7
 Bundle-ManifestVersion: 2
-Bundle-Vendor: HARTING IT_SD
-Havis-Bundle: /OSGI-INF/havis.custom.harting.iso159612.properties
-Bundle-Activator: havis.custom.harting.iso159612.osgi.Activator
+Bundle-Vendor: Menucha Team <info@menucha.de>
+Havis-Bundle: /OSGI-INF/havis.app.iso159612.properties
+Bundle-Activator: havis.app.iso159612.osgi.Activator
 Import-Package: 
  com.fasterxml.jackson.annotation,
  com.fasterxml.jackson.core,

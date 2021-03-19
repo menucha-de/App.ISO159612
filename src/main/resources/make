@@ -4,7 +4,7 @@
 
 APP=$(realpath $0)
 
-NAME=havis.custom.harting.iso159612
+NAME=havis.app.iso159612
 DEPS="havis.capture-api libjpeg62-turbo libv4lconvert0 libv4l-0 havis.capture.adapter.camera havis.transform.transformer.imager"
 INFO=/opt/havis-apps/info
 EXIT=0

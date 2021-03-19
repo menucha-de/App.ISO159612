@@ -1,4 +1,4 @@
-@url HARTING harting;
+@url menucha menucha;
 
 
 /** Add css rules here for your application. */
@@ -442,8 +442,8 @@ body {
 	border-color: #2196F3;
 }
 
-.harting{
-	background: HARTING no-repeat right;
+.menucha {
+	background: menucha no-repeat right;
 }
 
 .container-rw {

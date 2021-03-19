@@ -1,0 +1,26 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder" xmlns:g="urn:import:com.google.gwt.user.client.ui"
+	xmlns:c="urn:import:havis.application.component.ui" xmlns:w="urn:import:havis.app.iso159612.ui.client.widgets">
+	<ui:with type="havis.app.iso159612.utils.Translation" field="i18n" />
+	<ui:style>	
+	</ui:style>
+	<g:FlowPanel>
+		<g:HorizontalPanel addStyleNames="property-se" verticalAlignment="ALIGN_MIDDLE">
+			<g:Label text="{i18n.settingsPropertyIdEncoding}" addStyleNames="label-style"/>
+			<g:ListBox ui:field="idEncoding" addStyleNames="havis-listBox havis-textBox-te" />
+		</g:HorizontalPanel>
+		<g:HorizontalPanel addStyleNames="property-se" verticalAlignment="ALIGN_MIDDLE">
+			<g:Label text="{i18n.settingsPropertyCompation}" addStyleNames="label-style"/>
+			<g:ListBox ui:field="compaction" addStyleNames="havis-listBox havis-textBox-te" />
+		</g:HorizontalPanel>
+		<g:HorizontalPanel addStyleNames="property-se" verticalAlignment="ALIGN_MIDDLE">
+			<g:Label text="{i18n.settingsPropertyTemplate}" addStyleNames="label-style"/>
+			<g:ListBox ui:field="template" addStyleNames="havis-listBox havis-textBox-te" />
+		</g:HorizontalPanel>
+		<w:ResultBox ui:field="resultBox"/>
+		<g:HorizontalPanel ui:field="toolbar" addStyleNames="toolbar toolbar-se">
+			<g:Button ui:field="reset" text="{i18n.settingsButtonReset}" addStyleNames="toolbar-button" />
+			<g:Button ui:field="apply" text="{i18n.settingsButtonApply}" addStyleNames="toolbar-button" />
+		</g:HorizontalPanel>
+	</g:FlowPanel>
+</ui:UiBinder> 
